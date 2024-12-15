@@ -1,0 +1,37 @@
+<div class="bg-body-secondary text-center py-5 rounded-2">
+    <h1 class="display-6 fw-bold">Payment Detail Register</h1>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th (click)="sortData('cardOwnerName')" class="mouse-hover">
+              نام مالک کارت
+              <i class="fa" [ngClass]="{'fa-sort-up': sortColumn === 'cardOwnerName' && isAscending, 'fa-sort-down': sortColumn === 'cardOwnerName' && !isAscending}"></i>
+            </th>
+            <th (click)="sortData('cardNumber')" class="mouse-hover">
+              شماره کارت
+              <i class="fa" [ngClass]="{'fa-sort-up': sortColumn === 'cardNumber' && isAscending, 'fa-sort-down': sortColumn === 'cardNumber' && !isAscending}"></i>
+            </th>
+            <th (click)="sortData('experiationDate')" class="mouse-hover">
+              تاریخ انقضا
+              <i class="fa" [ngClass]="{'fa-sort-up': sortColumn === 'experiationDate' && isAscending, 'fa-sort-down': sortColumn === 'experiationDate' && !isAscending}"></i>
+            </th>
+            <th>حذف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pd of service.list">
+            <td>{{ pd.cardOwnerName }}</td>
+            <td>{{ pd.cardNumber }}</td>
+            <td>{{ pd.experiationDate }}</td>
+            <td class="text-center">
+              <i class="fa-solid fa-trash-can fa-lg mouse-hover text-danger" (click)="OnDelete(pd.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
